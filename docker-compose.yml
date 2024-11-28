@@ -4,23 +4,8 @@ services:
     command: bundle exec rails server -b 0.0.0.0 -p 3000
     env_file:
       - .env
-    depends_on:
-      - db
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: sample_app
     volumes:
       - .:/app
-    networks:
-      - app_network
-
-  db:
-    image: postgres:15
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
-      POSTGRES_DB: sample_app
     networks:
       - app_network
 
