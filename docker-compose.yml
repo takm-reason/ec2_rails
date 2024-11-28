@@ -1,0 +1,29 @@
+version: '3.9'
+
+services:
+  web:
+    build: .
+    command: bundle exec rails server -b 0.0.0.0 -p 3000
+    depends_on:
+      - db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sample_app
+    volumes:
+      - .:/app
+    networks:
+      - app_network
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: sample_app
+    networks:
+      - app_network
+
+networks:
+  app_network:
+    driver: bridge

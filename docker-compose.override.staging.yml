@@ -1,0 +1,11 @@
+services:
+  web:
+    ports:
+      - "3001:3000"
+    environment:
+      - RAILS_ENV=staging
+    deploy:
+      resources:
+        limits:
+          cpus: "0.5"
+          memory: "512M"

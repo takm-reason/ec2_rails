@@ -1,0 +1,14 @@
+services:
+  web:
+    ports:
+      - "3002:3000"
+    environment:
+      - RAILS_ENV=production
+    deploy:
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: "1G"
+        reservations:
+          cpus: "1.0"
+          memory: "768M"
